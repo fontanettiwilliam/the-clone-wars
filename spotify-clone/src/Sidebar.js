@@ -7,7 +7,7 @@ import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import LibraryMusicOutlinedIcon from "@material-ui/icons/LibraryMusicOutlined";
 function Sidebar() {
-  const [{ playlists }, dispatch] = useDataLayerValue();
+  const [{ playlists }] = useDataLayerValue();
 
   console.log("playlists >", playlists);
   return (

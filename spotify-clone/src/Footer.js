@@ -14,39 +14,41 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 function Footer() {
   return (
     <div className="footer">
-      <div className="footer_left">
-        <img
-          className="footer_albumCover"
-          src="https://upload.wikimedia.org/wikipedia/pt/c/c1/The_Weeknd_-_After_Hours.png"
-          alt="album_cover"
-        />
-        <div className="footer_songInfo">
-          <h4>Blinding Lights</h4>
-          <p>The Weeknd</p>
+      <div className="footer_container">
+        <div className="footer_left">
+          <img
+            className="footer_albumCover"
+            src="https://upload.wikimedia.org/wikipedia/pt/c/c1/The_Weeknd_-_After_Hours.png"
+            alt="album_cover"
+          />
+          <div className="footer_songInfo">
+            <h4>Blinding Lights</h4>
+            <p>The Weeknd</p>
+          </div>
         </div>
-      </div>
-      <div className="footer_center">
-        <ShuffleIcon className="footer_green" />
-        <SkipPreviousIcon className="footer_icon" />
-        <PlayCircleOutlineOutlinedIcon
-          fontSize="large"
-          className="footer_icon"
-        />
-        <SkipNextIcon className="footer_icon" />
-        <RepeatIcon className="footer_green" />
-      </div>
-      <div className="footer_right">
-        <Grid container spacing={2}>
-          <Grid item>
-            <PlaylistPlayIcon />
+        <div className="footer_center">
+          <ShuffleIcon className="footer_green" />
+          <SkipPreviousIcon className="footer_icon" />
+          <PlayCircleOutlineOutlinedIcon
+            fontSize="large"
+            className="footer_icon"
+          />
+          <SkipNextIcon className="footer_icon" />
+          <RepeatIcon className="footer_green" />
+        </div>
+        <div className="footer_right">
+          <Grid container spacing={2}>
+            <Grid item>
+              <PlaylistPlayIcon />
+            </Grid>
+            <Grid item>
+              <VolumeDownIcon />
+            </Grid>
+            <Grid item xs>
+              <Slider />
+            </Grid>
           </Grid>
-          <Grid item>
-            <VolumeDownIcon />
-          </Grid>
-          <Grid item xs>
-            <Slider />
-          </Grid>
-        </Grid>
+        </div>
       </div>
     </div>
   );
