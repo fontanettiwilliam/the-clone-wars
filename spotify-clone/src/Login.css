@@ -7,6 +7,8 @@
 
 .login > img {
   width: 300px;
+  object-fit: contain;
+  padding: 10px;
 }
 
 .login > a {
