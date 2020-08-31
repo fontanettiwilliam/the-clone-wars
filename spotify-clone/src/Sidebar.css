@@ -4,6 +4,11 @@
   flex: 0.2;
   color: white;
   background-color: #040404;
+  overflow-y: overlay;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar_logo {
