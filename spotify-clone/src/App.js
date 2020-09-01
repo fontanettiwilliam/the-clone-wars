@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
+import SpotifyWebApi from "spotify-web-api-js";
 import "./App.css";
+import { useDataLayerValue } from "./DataLayer";
 import Login from "./Login";
 import Player from "./Player";
 import { getTokenFromUrl } from "./spotify";
-import SpotifyWebApi from "spotify-web-api-js";
-import { useDataLayerValue } from "./DataLayer";
 const spotify = new SpotifyWebApi();
 
 function App() {
@@ -45,10 +45,17 @@ function App() {
         });
       });
 
-      spotify.getMyTopArtists().then((response) => {
+      spotify.getMyTopArtists({ limit: 10, offset: 20 }).then((response) => {
         dispatch({
           type: "SET_TOP_ARTISTS",
           top_artists: response,
+        });
+      });
+
+      spotify.getMyTopTracks({ limit: 10, offset: 20 }).then((response) => {
+        dispatch({
+          type: "SET_TOP_TRACKS",
+          top_tracks: response,
         });
       });
     }
