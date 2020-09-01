@@ -61,6 +61,11 @@
   transform: scale(1.2) !important;
 }
 
+.footer_icon:hover {
+  color: white;
+  transition: 200ms color ease-in;
+}
+
 .footer_right {
   flex: 0.2;
   display: flex;
@@ -78,5 +83,5 @@
 }
 
 .footer_right * .MuiSlider-thumb {
-  color: white !important;
+  color: white;
 }

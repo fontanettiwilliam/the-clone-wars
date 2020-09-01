@@ -65,10 +65,10 @@ function Footer({ spotify }) {
 
   const skipNext = () => {
     spotify.skipToNext();
-    spotify.getMyCurrentPlayingTrack().then((r) => {
+    spotify.getMyCurrentPlayingTrack().then((response) => {
       dispatch({
         type: "SET_ITEM",
-        item: r.item,
+        item: response.item,
       });
       dispatch({
         type: "SET_PLAYING",
@@ -79,10 +79,10 @@ function Footer({ spotify }) {
 
   const skipPrevious = () => {
     spotify.skipToPrevious();
-    spotify.getMyCurrentPlayingTrack().then((r) => {
+    spotify.getMyCurrentPlayingTrack().then((response) => {
       dispatch({
         type: "SET_ITEM",
-        item: r.item,
+        item: response.item,
       });
       dispatch({
         type: "SET_PLAYING",
@@ -127,13 +127,13 @@ function Footer({ spotify }) {
             <PauseCircleOutlineIcon
               onClick={handlePlayPause}
               fontSize="large"
-              className="footer__icon"
+              className="footer_icon"
             />
           ) : (
             <PlayCircleOutlineIcon
               onClick={handlePlayPause}
               fontSize="large"
-              className="footer__icon"
+              className="footer_icon"
             />
           )}
           <SkipNextIcon className="footer_icon" onClick={skipPrevious} />
@@ -142,12 +142,14 @@ function Footer({ spotify }) {
         <div className="footer_right">
           <Grid container spacing={2}>
             <Grid item>
-              <PlaylistPlayIcon />
+              <PlaylistPlayIcon className="footer_icon" />
             </Grid>
             <Grid item>
-              {sliderValue === 0 && <VolumeOffIcon />}
-              {sliderValue > 0 && sliderValue <= 50 && <VolumeDownIcon />}
-              {sliderValue > 50 && <VolumeUpIcon />}
+              {sliderValue === 0 && <VolumeOffIcon className="footer_icon" />}
+              {sliderValue > 0 && sliderValue <= 50 && (
+                <VolumeDownIcon className="footer_icon" />
+              )}
+              {sliderValue > 50 && <VolumeUpIcon className="footer_icon" />}
             </Grid>
             <Grid item xs>
               <Slider
