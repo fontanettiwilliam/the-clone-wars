@@ -8,10 +8,12 @@ export const initialState = {
   discover_weekly: null,
   top_artists: null,
   top_tracks: null,
+  repeat: "off",
+  shuffle: false,
 };
 
 const reducer = (state, action) => {
-  console.log(action);
+  // console.log(action);
 
   switch (action.type) {
     case "SET_USER":
@@ -58,6 +60,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         top_tracks: action.top_tracks,
+      };
+    case "SET_REPEAT":
+      return {
+        ...state,
+        repeat: action.repeat,
+      };
+    case "SET_SHUFFLE":
+      return {
+        ...state,
+        shuffle: action.shuffle,
       };
 
     default:

@@ -9,7 +9,7 @@ import LibraryMusicOutlinedIcon from "@material-ui/icons/LibraryMusicOutlined";
 function Sidebar() {
   const [{ playlists }] = useDataLayerValue();
 
-  console.log("playlists >", playlists);
+  // console.log("playlists >", playlists);
   return (
     <div className="sidebar">
       <img className="sidebar_logo" src={Logo} alt="sidebar-logo" />

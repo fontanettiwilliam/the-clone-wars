@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Grid, Slider } from "@material-ui/core";
+import { Grid, Slider, Badge } from "@material-ui/core";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
@@ -15,7 +15,11 @@ import "./Footer.css";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 
 function Footer({ spotify }) {
-  const [{ token, item, playing, device }, dispatch] = useDataLayerValue();
+  const [
+    { token, item, playing, device, repeat, shuffle },
+    dispatch,
+  ] = useDataLayerValue();
+
   const [sliderValue, setSliderValue] = useState(
     device?.volume_percent ? device.volume_percent : 0
   );
@@ -24,7 +28,7 @@ function Footer({ spotify }) {
     spotify
       .getMyCurrentPlaybackState()
       .then((response) => {
-        console.log(response);
+        console.log("Response", response);
         dispatch({
           type: "SET_PLAYING",
           playing: response.is_playing,
@@ -40,6 +44,16 @@ function Footer({ spotify }) {
           device: response.device,
         });
 
+        dispatch({
+          type: "SET_REPEAT",
+          repeat: response.repeat_state,
+        });
+
+        dispatch({
+          type: "SET_SUFFLE",
+          shuffle: response.shuffle_state,
+        });
+
         setSliderValue(response.device.volume_percent);
       })
       .catch((error) => {
@@ -47,6 +61,7 @@ function Footer({ spotify }) {
       });
   }, [dispatch, spotify, token]);
 
+  //#region [PLAY/PAUSE]
   const handlePlayPause = () => {
     if (playing) {
       spotify.pause();
@@ -62,8 +77,56 @@ function Footer({ spotify }) {
       });
     }
   };
+  //#endregion
 
-  const skipNext = () => {
+  //#region [SHUFLE]
+  const handleShuffle = () => {
+    spotify.setShuffle(!shuffle);
+    spotify.getMyCurrentPlayingTrack().then((response) => {
+      dispatch({
+        type: "SET_ITEM",
+        item: response.item,
+      });
+      dispatch({
+        type: "SET_SHUFFLE",
+        shuffle: !shuffle,
+      });
+    });
+  };
+  //#endregion
+
+  //#region [REPEAT]
+  const nextRepeat = (current) => {
+    switch (current) {
+      case "off":
+        return "context";
+      case "context":
+        return "track";
+      case "track":
+        return "off";
+      default:
+        return "off";
+    }
+  };
+
+  const handleRepeat = () => {
+    const nextState = nextRepeat(repeat);
+    spotify.setRepeat(nextState);
+    spotify.getMyCurrentPlayingTrack().then((response) => {
+      dispatch({
+        type: "SET_ITEM",
+        item: response.item,
+      });
+      dispatch({
+        type: "SET_REPEAT",
+        repeat: nextState,
+      });
+    });
+  };
+  //#endregion
+
+  //#region [SKIP]
+  const handleSkipNext = () => {
     spotify.skipToNext();
     spotify.getMyCurrentPlayingTrack().then((response) => {
       dispatch({
@@ -77,7 +140,7 @@ function Footer({ spotify }) {
     });
   };
 
-  const skipPrevious = () => {
+  const handleSkipPrevious = () => {
     spotify.skipToPrevious();
     spotify.getMyCurrentPlayingTrack().then((response) => {
       dispatch({
@@ -90,7 +153,9 @@ function Footer({ spotify }) {
       });
     });
   };
+  //#endregion
 
+  //#region [SLIDER]
   const handleChangeSlider = (event, newValue) => {
     setSliderValue(newValue);
   };
@@ -98,6 +163,7 @@ function Footer({ spotify }) {
   const handleChangeSliderCommited = (event, newValue) => {
     spotify.setVolume(newValue);
   };
+  //#endregion
 
   return (
     <div className="footer">
@@ -121,8 +187,14 @@ function Footer({ spotify }) {
           )}
         </div>
         <div className="footer_center">
-          <ShuffleIcon className="footer_green" />
-          <SkipPreviousIcon className="footer_icon" onClick={skipNext} />
+          <ShuffleIcon
+            className={!shuffle ? "footer_icon" : "footer_green"}
+            onClick={handleShuffle}
+          />
+          <SkipPreviousIcon
+            className="footer_icon"
+            onClick={handleSkipPrevious}
+          />
           {playing ? (
             <PauseCircleOutlineIcon
               onClick={handlePlayPause}
@@ -136,8 +208,13 @@ function Footer({ spotify }) {
               className="footer_icon"
             />
           )}
-          <SkipNextIcon className="footer_icon" onClick={skipPrevious} />
-          <RepeatIcon className="footer_green" />
+          <SkipNextIcon className="footer_icon" onClick={handleSkipNext} />
+          <Badge
+            badgeContent={repeat === "track" ? 1 : 0}
+            className={repeat === "off" ? "footer_icon" : "footer_green"}
+          >
+            <RepeatIcon onClick={handleRepeat} />
+          </Badge>
         </div>
         <div className="footer_right">
           <Grid container spacing={2}>
