@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.css";
@@ -10,7 +11,7 @@ const spotify = new SpotifyWebApi();
 function App() {
   const [{ token }, dispatch] = useDataLayerValue();
 
-  useEffect(() => {
+  const configSpotify = async () => {
     const hash = getTokenFromUrl();
     window.location.hash = "";
 
@@ -21,44 +22,46 @@ function App() {
         type: "SET_TOKEN",
         token: accessToken,
       });
-
       spotify.setAccessToken(accessToken);
 
-      spotify.getMe().then((user) => {
-        dispatch({
-          type: "SET_USER",
-          user,
-        });
+      const user = await spotify.getMe();
+      dispatch({
+        type: "SET_USER",
+        user,
       });
 
-      spotify.getUserPlaylists().then((playlists) => {
-        dispatch({
-          type: "SET_PLAYLISTS",
-          playlists,
-        });
+      const playlists = await spotify.getUserPlaylists();
+      dispatch({
+        type: "SET_PLAYLISTS",
+        playlists,
       });
 
-      spotify.getPlaylist("37i9dQZEVXcJjZM0ldXz2y").then((response) => {
-        dispatch({
-          type: "SET_DISCOVER_WEEKLY",
-          discover_weekly: response,
-        });
+      const discoverWeekly = await spotify.getPlaylist(
+        "37i9dQZEVXcJjZM0ldXz2y"
+      );
+      dispatch({
+        type: "SET_DISCOVER_WEEKLY",
+        discover_weekly: discoverWeekly,
       });
 
-      spotify.getMyTopArtists({ limit: 10, offset: 20 }).then((response) => {
-        dispatch({
-          type: "SET_TOP_ARTISTS",
-          top_artists: response,
-        });
+      const topArtists = await spotify.getMyTopArtists({
+        limit: 10,
+        offset: 20,
+      });
+      dispatch({
+        type: "SET_TOP_ARTISTS",
+        top_artists: topArtists,
       });
 
-      spotify.getMyTopTracks({ limit: 10, offset: 20 }).then((response) => {
-        dispatch({
-          type: "SET_TOP_TRACKS",
-          top_tracks: response,
-        });
+      const topTracks = await spotify.getMyTopTracks({ limit: 10, offset: 20 });
+      dispatch({
+        type: "SET_TOP_TRACKS",
+        top_tracks: topTracks,
       });
     }
+  };
+  useEffect(() => {
+    configSpotify();
   }, [dispatch]);
 
   return (
