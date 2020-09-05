@@ -2,10 +2,10 @@
 import React, { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.css";
-import { useDataLayerValue } from "./DataLayer";
-import Login from "./Login";
-import Player from "./Player";
-import { getTokenFromUrl } from "./spotify";
+import { useDataLayerValue } from "./providers/DataLayer";
+import Login from "./pages/Login/Login";
+import Playlist from "./pages/Playlist/Playlist";
+import { getTokenFromUrl } from "./services/spotify";
 const spotify = new SpotifyWebApi();
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="app">
-      {token ? <Player spotify={spotify} /> : <Login />}
+      {token ? <Playlist spotify={spotify} /> : <Login />}
     </div>
   );
 }

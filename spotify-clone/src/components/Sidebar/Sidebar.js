@@ -1,15 +1,13 @@
 import React from "react";
 import "./Sidebar.css";
-import { useDataLayerValue } from "./DataLayer";
-import Logo from "./asset/logo/spotify_white.png";
-import SidebarOption from "./SidebarOption";
+import { useDataLayerValue } from "../../providers/DataLayer";
+import Logo from "../../asset/logo/spotify_white.png";
+import SidebarOption from "../SidebarOption/SidebarOption";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import LibraryMusicOutlinedIcon from "@material-ui/icons/LibraryMusicOutlined";
 function Sidebar() {
   const [{ playlists }] = useDataLayerValue();
-
-  // console.log("playlists >", playlists);
   return (
     <div className="sidebar">
       <img className="sidebar_logo" src={Logo} alt="sidebar-logo" />

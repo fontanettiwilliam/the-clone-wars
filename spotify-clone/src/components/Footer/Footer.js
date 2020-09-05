@@ -10,7 +10,7 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import React, { useEffect, useState } from "react";
-import { useDataLayerValue } from "./DataLayer";
+import { useDataLayerValue } from "../../providers/DataLayer";
 import "./Footer.css";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 
@@ -20,8 +20,9 @@ function Footer({ spotify }) {
     dispatch,
   ] = useDataLayerValue();
 
+  console.log(token);
   const [sliderValue, setSliderValue] = useState(
-    device?.volume_percent ? device.volume_percent : 0
+    device ? device.volume_percent : 0
   );
 
   useEffect(() => {
@@ -54,7 +55,7 @@ function Footer({ spotify }) {
           shuffle: response.shuffle_state,
         });
 
-        setSliderValue(response.device.volume_percent);
+        setSliderValue(response.device ? response.device.volume_percent : 100);
       })
       .catch((error) => {
         console.error("erro", error);
