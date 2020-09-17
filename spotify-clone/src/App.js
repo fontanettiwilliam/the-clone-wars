@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 import SpotifyWebApi from "spotify-web-api-js";
 import "./App.css";
 import { useDataLayerValue } from "./providers/DataLayer";
-import Login from "./pages/Login/Login";
-import Playlist from "./pages/Playlist/Playlist";
+import Routes from "./routes";
 import { getTokenFromUrl } from "./services/spotify";
+
 const spotify = new SpotifyWebApi();
 
 function App() {
@@ -60,14 +61,17 @@ function App() {
       });
     }
   };
+
   useEffect(() => {
     configSpotify();
   }, [dispatch]);
 
+  useEffect(() => {}, []);
+
   return (
-    <div className="app">
-      {token ? <Playlist spotify={spotify} /> : <Login />}
-    </div>
+    <BrowserRouter>
+      <Routes spotify={spotify} />
+    </BrowserRouter>
   );
 }
 
