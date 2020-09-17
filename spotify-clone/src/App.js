@@ -10,7 +10,7 @@ import { getTokenFromUrl } from "./services/spotify";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ token }, dispatch] = useDataLayerValue();
+  const [, dispatch] = useDataLayerValue();
 
   const configSpotify = async () => {
     const hash = getTokenFromUrl();
