@@ -71,14 +71,63 @@ const top_tracks = {
 
 const token =
   "BQA6FXmdSv7wNzvK9OnCmFuQBhS1xa4nl7fI2UvLV_ItwCwTfZjb1BVyHqH5gQ3oOe2lt52GMuV1yusbL4k45IiNuRhz5m-_JxSX16LOWo0n7OD1vwuPqBt1t9AEKSAMjxOYMYxP5dh8iicTNM2Ums-cfckHR9EUk_30dliFz7TEUu4VSdENkUkMVE6tptpycLm0rxMDO_YI-P3Vf498kBdPPbep51YN_MFNKnOEROguyYwvnbv1o9EVA2SfHWB_kzlTA5CXI_YjED_xI0reVIntZjv6";
+
+const user = {
+  country: "BR",
+  display_name: "William Fontanetti",
+  email: "williampriester@gmail.com",
+  id: "williampriester",
+  images: [
+    {
+      height: null,
+      url:
+        "https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-1/p320…6&oh=39357491455750e9b5b9f0998f940566&oe=5F8BDFF9",
+      width: null,
+    },
+  ],
+};
+
+const playlists = {
+  items: [
+    {
+      id: "37i9dQZEVXcJjZM0ldXz2y",
+      description:
+        "Sua mixtape semanal cheia de novas descobertas e pérolas musicais escolhidas só pra você. Atualiza toda segunda.",
+      images: [
+        {
+          height: null,
+          url:
+            "https://newjams-images.scdn.co/v2/discover-weekly/…wvBayEZrlYAHwA==/MjU6NjE6MTBUMjAtMDEtMA==/default",
+          width: null,
+        },
+      ],
+      name: "Descobertas da Semana",
+      type: "playlist",
+    },
+    {
+      id: "48tRzV0EZMG7D94urK350X",
+      description: "Tuts tus puts puts tei tei",
+      images: [
+        {
+          height: null,
+          url:
+            "https://i.scdn.co/image/ab67706c0000bebbb1b4964557d72e0520ebcc7d",
+          width: null,
+        },
+      ],
+      name: "Moment for Cell",
+      type: "playlist",
+    },
+  ],
+};
 //#endregion
 
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 export const initialState = {
-  user: null,
+  user: DEV_MODE ? user : null,
   token: DEV_MODE ? token : null,
-  playlists: [],
+  playlists: DEV_MODE ? playlists : [],
   playing: false,
   item: null,
   device: null,
