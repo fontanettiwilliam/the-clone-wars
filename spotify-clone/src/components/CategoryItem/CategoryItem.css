@@ -41,3 +41,23 @@
   text-transform: none;
   color: #b3b3b3;
 }
+
+.category_fab {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #1db954;
+}
+
+.category_fab:hover {
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.1) !important;
+}
