@@ -16,51 +16,54 @@ import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 
 function Footer({ spotify }) {
   const [
-    { token, item, playing, device, repeat, shuffle },
+    { item, playing, device, repeat, shuffle },
     dispatch,
   ] = useDataLayerValue();
 
-  console.log(token);
   const [sliderValue, setSliderValue] = useState(
     device ? device.volume_percent : 0
   );
 
-  useEffect(() => {
-    spotify
-      .getMyCurrentPlaybackState()
-      .then((response) => {
-        console.log("Response", response);
-        dispatch({
-          type: "SET_PLAYING",
-          playing: response.is_playing,
-        });
+  // const configSpotify = async () => {
+  //   spotify
+  //     .getMyCurrentPlaybackState()
+  //     .then((response) => {
+  //       console.log("Response", response);
+  //       dispatch({
+  //         type: "SET_PLAYING",
+  //         playing: response.is_playing,
+  //       });
 
-        dispatch({
-          type: "SET_ITEM",
-          item: response.item,
-        });
+  //       dispatch({
+  //         type: "SET_ITEM",
+  //         item: response.item,
+  //       });
 
-        dispatch({
-          type: "SET_DEVICE",
-          device: response.device,
-        });
+  //       dispatch({
+  //         type: "SET_DEVICE",
+  //         device: response.device,
+  //       });
 
-        dispatch({
-          type: "SET_REPEAT",
-          repeat: response.repeat_state,
-        });
+  //       dispatch({
+  //         type: "SET_REPEAT",
+  //         repeat: response.repeat_state,
+  //       });
 
-        dispatch({
-          type: "SET_SUFFLE",
-          shuffle: response.shuffle_state,
-        });
+  //       dispatch({
+  //         type: "SET_SUFFLE",
+  //         shuffle: response.shuffle_state,
+  //       });
 
-        setSliderValue(response.device ? response.device.volume_percent : 100);
-      })
-      .catch((error) => {
-        console.error("erro", error);
-      });
-  }, [dispatch, spotify, token]);
+  //       setSliderValue(response.device ? response.device.volume_percent : 100);
+  //     })
+  //     .catch((error) => {
+  //       console.error("erro", error);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   configSpotify();
+  // }, [spotify]);
 
   //#region [PLAY/PAUSE]
   const handlePlayPause = () => {

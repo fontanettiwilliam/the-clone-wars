@@ -59,14 +59,45 @@ function App() {
         type: "SET_TOP_TRACKS",
         top_tracks: topTracks,
       });
+
+      spotify
+        .getMyCurrentPlaybackState()
+        .then((response) => {
+          console.log("Response", response);
+          dispatch({
+            type: "SET_PLAYING",
+            playing: response.is_playing,
+          });
+
+          dispatch({
+            type: "SET_ITEM",
+            item: response.item,
+          });
+
+          dispatch({
+            type: "SET_DEVICE",
+            device: response.device,
+          });
+
+          dispatch({
+            type: "SET_REPEAT",
+            repeat: response.repeat_state,
+          });
+
+          dispatch({
+            type: "SET_SUFFLE",
+            shuffle: response.shuffle_state,
+          });
+        })
+        .catch((error) => {
+          console.error("erro", error);
+        });
     }
   };
 
   useEffect(() => {
     configSpotify();
   }, [dispatch]);
-
-  useEffect(() => {}, []);
 
   return (
     <BrowserRouter>
