@@ -12,13 +12,22 @@ function Sidebar() {
     <div className="sidebar">
       <img className="sidebar_logo" src={Logo} alt="sidebar-logo" />
 
-      <SidebarOption title="Home" Icon={HomeOutlinedIcon} />
-      <SidebarOption title="Search" Icon={SearchOutlinedIcon} />
-      <SidebarOption title="Your Library" Icon={LibraryMusicOutlinedIcon} />
+      <SidebarOption title="Home" Icon={HomeOutlinedIcon} link="/home" />
+      <SidebarOption title="Search" Icon={SearchOutlinedIcon} link="/home" />
+      <SidebarOption
+        title="Your Library"
+        Icon={LibraryMusicOutlinedIcon}
+        link="/home"
+      />
       <strong className="sidebar_title">PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist) => (
-        <SidebarOption key={playlist.name} title={playlist.name} />
+        <SidebarOption
+          key={playlist.name}
+          title={playlist.name}
+          link="/playlist"
+          playlistId={playlist.id}
+        />
       ))}
     </div>
   );

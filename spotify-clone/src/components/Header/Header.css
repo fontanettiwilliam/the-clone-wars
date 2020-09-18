@@ -23,6 +23,7 @@
 .header_right {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .header_right > h4 {

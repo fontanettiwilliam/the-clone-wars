@@ -11,10 +11,10 @@ function TopbarMenu() {
   return (
     <div className="topBar">
       <div className="topBar_icons">
-        <Link className="rounded_container">
+        <Link className="rounded_container" to="/home">
           <ChevronLeftIcon className="rounded_icon" />
         </Link>
-        <Link className="rounded_container">
+        <Link className="rounded_container" to="/home">
           <ChevronRightIcon className="rounded_icon" />
         </Link>
       </div>

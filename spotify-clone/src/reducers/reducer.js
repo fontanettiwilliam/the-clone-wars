@@ -81,7 +81,7 @@ const user = {
     {
       height: null,
       url:
-        "https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-1/p320…6&oh=39357491455750e9b5b9f0998f940566&oe=5F8BDFF9",
+        "https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-1/p320x320/64582676_2399903296735165_260334065347985408_n.jpg?_nc_cat=105&_nc_sid=0c64ff&_nc_ohc=hcCcdWoSYFkAX_pKQ9U&_nc_ht=scontent-ort2-2.xx&tp=6&oh=458f3a5d52bf16c9cfd3d10a9fb13c26&oe=5F87EB79",
       width: null,
     },
   ],
@@ -97,7 +97,7 @@ const playlists = {
         {
           height: null,
           url:
-            "https://newjams-images.scdn.co/v2/discover-weekly/…wvBayEZrlYAHwA==/MjU6NjE6MTBUMjAtMDEtMA==/default",
+            "https://newjams-images.scdn.co/v2/discover-weekly/07TiwZ_OutiVZqmhSdw9aajwnCQVXJ5KhL8i4foFo01hSYLh7-Lcf8yrkWUfHVAC9QXV2Onxed5f1y3qv2FB4w5QYU1KTxz1YbvFiL7krxxc2IiO_tyO8xArvLBq7quUWsKmoP9mTx7QIj6Ai_JC3OlvBBekzrgRrI0xb174FGfqizzd2rgRYhNY7fzn7_vdDY_clIh01XbD7I3i3TfrvoIC-5kuR4guIOIDs02PRgx2wXu_S9cQHmeK9X8oQTw0WJYaDga1M8cKJhTNrYu77C09IfHmkiTILOmHJASnV986lkbotnLeBgt0iN_9Wum9f7VP1rxJDERNiF4xPxhK-g==/MjU6NTU6MDBUMjAtMDEtMA==/default",
           width: null,
         },
       ],
@@ -131,7 +131,6 @@ export const initialState = {
   playing: false,
   item: null,
   device: null,
-  discover_weekly: null,
   top_artists: DEV_MODE ? top_artists : null,
   top_tracks: DEV_MODE ? top_tracks : null,
   repeat: "off",
@@ -139,7 +138,7 @@ export const initialState = {
 };
 
 const reducer = (state, action) => {
-  console.log(action);
+  // console.log('ACTION > ', action);
 
   switch (action.type) {
     case "SET_USER":
@@ -171,11 +170,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         device: action.device,
-      };
-    case "SET_DISCOVER_WEEKLY":
-      return {
-        ...state,
-        discover_weekly: action.discover_weekly,
       };
     case "SET_TOP_ARTISTS":
       return {

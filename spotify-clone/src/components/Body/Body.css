@@ -3,7 +3,7 @@
   height: 100vh;
   color: white;
   padding: 30px;
-  background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
+  background: linear-gradient(#5166af, #121212);
   overflow-y: overlay;
 }
 
@@ -27,6 +27,10 @@
   flex: 1;
 }
 
+.body_infoText > strong {
+  text-transform: uppercase;
+}
+
 .body_infoText > h2 {
   font-size: 48px;
   margin-bottom: 10px;
@@ -34,6 +38,27 @@
 
 .body_infoText > p {
   font-size: 14px;
+  color: hsla(0, 0%, 100%, 0.7);
+}
+
+.body_infoOwner > strong {
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.body_infoOwner > strong:hover {
+  text-decoration: underline;
+}
+
+.body_infoOwner > span {
+  font-size: 14px;
+  color: hsla(0, 0%, 100%, 0.7);
+}
+
+.body_infoOwner > span::before {
+  content: "•";
+  margin: 0px 4px;
 }
 
 .body_songs {

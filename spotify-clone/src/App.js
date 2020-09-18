@@ -37,14 +37,6 @@ function App() {
         playlists,
       });
 
-      const discoverWeekly = await spotify.getPlaylist(
-        "37i9dQZEVXcJjZM0ldXz2y"
-      );
-      dispatch({
-        type: "SET_DISCOVER_WEEKLY",
-        discover_weekly: discoverWeekly,
-      });
-
       const topArtists = await spotify.getMyTopArtists({
         limit: 10,
         offset: 20,
@@ -63,7 +55,6 @@ function App() {
       spotify
         .getMyCurrentPlaybackState()
         .then((response) => {
-          console.log("Response", response);
           dispatch({
             type: "SET_PLAYING",
             playing: response.is_playing,
