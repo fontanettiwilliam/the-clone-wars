@@ -8,7 +8,7 @@ import SongRow from "../SongRow/SongRow";
 import "./Body.css";
 
 function Body({ spotify }) {
-  const [{ discover_weekly }, dispatch] = useDataLayerValue();
+  const [{ discover_weekly }] = useDataLayerValue();
   return (
     <div className="body">
       <Header spotify={spotify} />

@@ -9,7 +9,7 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDataLayerValue } from "../../providers/DataLayer";
 import "./Footer.css";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
