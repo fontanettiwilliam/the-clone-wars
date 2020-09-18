@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Home.css";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import { Link } from "react-router-dom";
 function Home({ spotify }) {
+  const [hover, setHover] = useState(false);
   return (
     <div className="home">
       <div className="player_body">
@@ -37,13 +39,22 @@ function Home({ spotify }) {
               <Link className="seeAll">VER TUDO</Link>
             </div>
             <div className="category_container">
-              <div className="category_item">
+              <div
+                className="category_item"
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+              >
                 <img
                   src="https://i.scdn.co/image/ab67706c0000da84b1b4964557d72e0520ebcc7d"
                   alt="item"
                 />
                 <h5>PlaylistName</h5>
                 <span>...</span>
+                {hover && (
+                  <div className="category_fab">
+                    <PlayArrowIcon />
+                  </div>
+                )}
               </div>
               <div className="category_item">
                 <img

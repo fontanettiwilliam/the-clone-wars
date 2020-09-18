@@ -44,7 +44,7 @@
   justify-content: center;
   margin-left: 16px;
   cursor: not-allowed;
-  transition: 200ms color ease-in;
+  transition: background-color 200ms ease-in;
 }
 .rounded_container:hover {
   background-color: #282828;
@@ -68,7 +68,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   padding: 2px;
-  transition: 200ms color ease-in;
+  transition: background-color 200ms ease-in;
 }
 
 .topBar_menu:hover {
@@ -129,11 +129,11 @@
   text-decoration: none;
   text-transform: uppercase;
   color: #b3b3b3;
-  transition: 200ms color ease-in;
+  transition: border-bottom 200ms ease-in;
 }
 
 .seeAll:hover {
-  background-color: #282828;
+  text-decoration: underline !important;
 }
 
 .category_container {
@@ -142,6 +142,7 @@
 }
 
 .category_item {
+  position: relative;
   flex: 1;
   padding: 20px 20px 16px;
   background: #282828;
@@ -149,6 +150,8 @@
   min-width: 165px;
   max-width: 200px;
   margin-left: 20px;
+  cursor: pointer;
+  text-align: left;
 }
 
 .category_item > img {
@@ -156,4 +159,44 @@
   height: 100%;
   margin-bottom: 16px;
   background-color: #333;
+}
+
+.category_item > h5 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.category_item > span {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #b3b3b3;
+}
+
+.category_fab {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #1db954;
+}
+
+.category_fab:hover {
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.1) !important;
 }
