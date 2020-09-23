@@ -19,11 +19,11 @@ a developer decided to train his skills to clone famous interfaces like Spotify,
 </p>
 
 
-### :notes: Chapter 1: The music player [[To go click.  Yeesssssss.](https://github.com/fontanettiwilliam/gostack_desafios/tree/master/Desafio01)]
+### :notes: Chapter 1: The music player [[To go click.  Yeesssssss.](https://github.com/fontanettiwilliam/the-clone-wars/tree/master/spotify-clone)]
 
+</br>
 
-
-## :memo: 
+## :memo: license
 This project is under the MIT license. See the [LICENSE](LICENSE.md) file for more details.
 ---
 
