@@ -23,6 +23,16 @@ a developer decided to train his skills to clone famous interfaces like Spotify,
 
 </br>
 
+## :confounded: Confused, you are, hmm?
+Okay okay, I wanted to put some Easter eggs from Star Wars, so to generate the titles of the topics I spoke just like Yoda. If you wanted to generate your own lines like Yoda, see the link below :smile:
+
+
+<p>
+  <a href="http://www.yodaspeak.co.uk/index.php" title="Yoda Generator">
+    <img alt="Yoda Generator" src="http://www.yodaspeak.co.uk/img/ys-title.png" width="100%" />
+  </a>
+</p>
+
 ## :memo: license
 This project is under the MIT license. See the [LICENSE](LICENSE.md) file for more details.
 ---
