@@ -10,13 +10,13 @@
 ## :notes: Description
 This is a simple clone of the famous Spotify music platform. An integrated login was made with Api from Spotify, in addition a home screen was created bringing real data of the user who is logged on such as: Name, Profile photo, Your Playlists, Your music and favorite artists. Unfortunately the song is not being played by our clone. Proem if you are listening in any other Spotify app, you can use this clone as a "remote control".
 </br>
-For the development, the concepts of ContextApi, Reducer, Hooks, use of own libraries for connection with api and page routing system were used.
+In the development, ContextApi, Reducer, Hooks, API connection and page routing system concepts were used.
 For more information on libraries, see the section below.
 </br>
 Note: All material used for Spotify's visual identity must be used in accordance with the company's terms. To do this, check directly on their [website](https://developer.spotify.com/branding-guidelines/)
 
 
-## :books: What did this project use?.
+## :books: What did this project use?
 
 <p>
   list of libs
